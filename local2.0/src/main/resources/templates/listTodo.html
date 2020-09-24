@@ -2,7 +2,8 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8" />
-  <title>Loda To-do</title>
+  <title>To-do</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 
   <!--css-->
@@ -17,24 +18,31 @@
 
 
 <ul>
-  <li th:each="todo : ${todoList}">
+  <li th:each="todo : ${todoList}" th:id="${todo.getId()}">
     <span th:text="*{todo.getId()}"></span> :
     <span th:text="*{todo.getTitle()}"></span> :
     <span th:text="*{todo.getDetail()}"></span> :
     <!--<button th:onclick="*{'myFunction(' + todo.getId() + ');'}">Xóa</button>-->
-    <button th:onclick="|sendData('*{todo.getId()}')|">Xóa</button>
+    <button  th:data-id="*{todo.getId()}" onclick="sendData(this.getAttribute('data-id'))">Xóa</button>
   </li>
 </ul>
 
 <a th:href="@{/addTodo}" class="btn btn-success"> + Thêm công việc</a>
 </body>
-<script ></script>
 
 
 <script>
   function sendData(id){
-    alert("hello");
-  }
+    $.ajax({
+      url: '/addTodo',
+      type: 'DELETE',
+      data: {id:id},
+      success: function(data, status){
+        alert("Status: " + status);
+        document.getElementById(id).remove();
+      }
+    });
+  };
 
 </script>
 

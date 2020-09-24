@@ -33,7 +33,7 @@ public class WebController {
     @DeleteMapping("/addTodo")
     public String Delete(@RequestParam(value = "id") String id)
     {
-        System.out.println(id);
+        todoList.removeIf( temp -> id.equals("id"));
         return "success";
     }
 
