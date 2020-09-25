@@ -17,7 +17,10 @@
 <h1>To-do</h1>
 
 <form th:action="@{/addTodo}" th:object="${todo}" method="post">
-  <p>id: <input type="text" th:field="*{id}" /></p>
+  <!--<div th:object="${todo.user}">
+    <p>id: <input type="text" th:field="*{userId}" /></p>
+  </div>-->
+  <p>id: <input type="text" th:field="${todo.user.userId}" /></p>
   <p>title: <input type="text" th:field="*{title}" /></p>
   <p>detail: <input type="text" th:field="*{detail}" /></p>
   <p><button type="submit" class="btn btn-success">Add</button></p>

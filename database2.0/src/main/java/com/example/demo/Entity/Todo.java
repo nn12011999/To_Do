@@ -13,7 +13,7 @@ public class Todo {
 
     @ManyToOne
     @JoinColumn(name = "user_id",nullable = false)
-    private User user;
+    private User user_id;
 
 
     private String title;
@@ -22,15 +22,14 @@ public class Todo {
 
     public Todo ()
     {
-
     }
 
     public User getUser() {
-        return user;
+        return user_id;
     }
 
     public void setUser(User user) {
-        this.user = user;
+        this.user_id = user;
     }
 
     public Todo(String title, String detail) {

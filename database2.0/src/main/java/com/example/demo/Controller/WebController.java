@@ -41,9 +41,7 @@ public class WebController {
 
     @PostMapping("/addTodo")
     public String addTodo(Todo todo) {
-        System.out.println(todo.getId());
-        System.out.println(todo.getUser());
-        //todoRepository.save(todo);
+        todoRepository.save(todo);
         return "success";
     }
 

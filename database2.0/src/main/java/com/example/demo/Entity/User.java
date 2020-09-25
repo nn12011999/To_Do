@@ -19,6 +19,10 @@ public class User {
 
     }
 
+    public User(long id) {
+        this.Id = id;
+    }
+
     public User(String name, String age) {
         this.Name = name;
         this.Age = age;
@@ -48,6 +52,6 @@ public class User {
         Age = age;
     }
 
-    @OneToMany( mappedBy = "user")
+    @OneToMany( mappedBy = "user_id")
     private Set<Todo> todos = new HashSet<>();
 }
